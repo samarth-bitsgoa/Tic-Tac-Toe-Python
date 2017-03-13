@@ -13,3 +13,36 @@ ull expo(ull base,ull x)
 }
 			
 			
+Matrix Multiplication:
+
+void mult(ll (&m1)[2][2],ll (&m2)[2][2])
+{
+    ll temp[2][2]={0,0,0,0};
+    For(i,0,2)
+    {
+        For(j,0,2)
+        {
+            For(k,0,2)
+            {
+                temp[i][j]+=m1[i][k]*m2[k][j];
+            }
+        }
+    }
+    For(i,0,2)
+    {
+        For(j,0,2)
+        {
+            m1[i][j]=temp[i][j];
+        }
+    }
+}
+void expo(ll (&res)[2][2],ll (&base)[2][2],ull x)
+{
+    while (x > 0)
+    {
+        if(x%2==1)
+            mult(res,base);
+        x/=2;
+        mult(base,base);
+    }
+}
